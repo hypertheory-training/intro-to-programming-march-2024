@@ -45,6 +45,12 @@ app.MapPost("/todos", async ([FromBody] TodoCreateRequest request,
     await session.SaveChangesAsync(); // actually write it to the database.
     return Results.Ok(response);
 });
+
+app.MapGet("/todos", async ([FromServices] IDocumentSession session) =>
+{
+    var todoList = await session.Query<TodoCreateResponse>().ToListAsync();
+    return Results.Ok(todoList);
+});
 // "Routing Table"
 app.Run(); // This starts the server and it blocks. It just listens for requests.
 public partial class Program { }
