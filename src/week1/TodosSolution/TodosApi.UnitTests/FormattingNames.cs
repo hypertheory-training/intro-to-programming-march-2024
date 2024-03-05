@@ -4,8 +4,8 @@ namespace TodosApi.UnitTests;
 public class FormattingNames
 {
     [Theory]
-    [InlineData("Bob", "Smith", "Smith, Bob")]
-    [InlineData("Jill", "Jones", "Jones, Jill")]
+    [InlineData("Bob", "Smith", "Bob Smith")]
+    [InlineData("Jill", "Jones", "Jill Jones")]
     public void NamesAreFormattedProperly(string firstName, string lastName, string expected)
     {
         var utils = new Utils();

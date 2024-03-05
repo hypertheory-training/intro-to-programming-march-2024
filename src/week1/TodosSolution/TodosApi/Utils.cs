@@ -4,6 +4,6 @@ public class Utils
 {
     public string FormatName(string firstName, string lastName)
     {
-        return $"{lastName}, {firstName}";
+        return $"{firstName} {lastName}";
     }
 }
