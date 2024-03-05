@@ -3,7 +3,7 @@
 
 public record TodoCreateRequest
 {
-    public string Description { get; set; } = string.Empty;
+    public string What { get; set; } = string.Empty;
 }
 
 public record TodoCreateResponse

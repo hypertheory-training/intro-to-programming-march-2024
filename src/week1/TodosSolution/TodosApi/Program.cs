@@ -38,7 +38,7 @@ app.MapPost("/todos", async ([FromBody] TodoCreateRequest request,
     var response = new TodoCreateResponse
     {
         Id = Guid.NewGuid(),
-        Description = request.Description,
+        Description = request.What,
         Status = TodoStatus.Incomplete
     };
     session.Store(response);
