@@ -9,7 +9,18 @@ public class BankAccount
     private decimal _currentBalance = 5000M;
     public void Deposit(decimal amountToDeposit)
     {
+        GuardTransactionAmount(amountToDeposit);
         _currentBalance += amountToDeposit;
+    }
+
+
+    private void GuardTransactionAmount(decimal transactionAmount)
+    {
+        // Never type Private, always refactor to it.
+        if (transactionAmount <= 0)
+        {
+            throw new InvalidTransactionAmountException();
+        }
     }
 
     public decimal GetBalance()
@@ -19,11 +30,11 @@ public class BankAccount
 
     public void Withdraw(decimal amountToWithdraw)
     {
-        if (amountToWithdraw < 0)
+        if (amountToWithdraw > _currentBalance)
         {
-
-            throw new InvalidTransactionAmountException();
+            throw new OverdraftException();
         }
+        GuardTransactionAmount(amountToWithdraw);
         _currentBalance -= amountToWithdraw;
     }
     // Overloaded the Withdraw
