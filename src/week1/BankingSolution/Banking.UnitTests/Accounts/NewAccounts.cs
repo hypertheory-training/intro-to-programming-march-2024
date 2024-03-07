@@ -10,7 +10,7 @@ public class NewAccounts
     {
         // WTCYWYH - "Write the code you WISH YOU HAD"
         // Given - I have a brand new account
-        var account = new BankAccount();
+        var account = new BankAccount(new DummyBonusCalculator());
 
         // WHEN I get the balance
         decimal openingBalance = account.GetBalance();
