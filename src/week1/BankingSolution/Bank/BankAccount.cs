@@ -10,7 +10,9 @@ public class BankAccount
     public void Deposit(decimal amountToDeposit)
     {
         GuardTransactionAmount(amountToDeposit);
-        _currentBalance += amountToDeposit;
+        var bonusCalculator = new StandardBonusCalculator(); // Inappropriate Intimacy
+        var bonus = bonusCalculator.CalculateBonus(_currentBalance, amountToDeposit);
+        _currentBalance += amountToDeposit + bonus;
     }
 
 
