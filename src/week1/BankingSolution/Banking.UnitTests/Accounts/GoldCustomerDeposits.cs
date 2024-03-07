@@ -1,5 +1,6 @@
 ﻿
 using Bank;
+using NSubstitute;
 
 namespace Banking.UnitTests.Accounts;
 public class GoldCustomerDeposits
@@ -8,20 +9,22 @@ public class GoldCustomerDeposits
     public void MakingADespositIncreasesBalance()
     {
         // Given 
-        var account = new BankAccount(new StubbedBonusCalculator());
-        // Get Balance is a "Query" - we are asking it for something.
+        var stubbedBonusCalculator = Substitute.For<ICalculateBonusesForDeposits>();
+        var account = new BankAccount(stubbedBonusCalculator);
+        var amountToDeposit = 142.23M;
+        var expectedBonus = 13.23M;
         var openingBalance = account.GetBalance();
-
+        stubbedBonusCalculator.CalculateDepositBonusFor(openingBalance, amountToDeposit).Returns(13.23M);
         // When
         // WTCYWYH 
         // Command - Telling it to do some work.
-        account.Deposit(142.23M);
+        account.Deposit(amountToDeposit);
 
         // Then
         //Assert.Equal(openingBalance + expected, account.GetBalance());
         // did the bonus calculator get called with the balance, and the amount to deposit.
         // did the bonus get added to the balance.
 
-        Assert.Equal(openingBalance + 142.23M + 13.23M, account.GetBalance());
+        Assert.Equal(openingBalance + amountToDeposit + expectedBonus, account.GetBalance());
     }
 }
