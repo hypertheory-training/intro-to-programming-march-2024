@@ -20,3 +20,6 @@ The Three Virtues of a Good Programmer:
 [https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
 )
 
+## Big Picture Stuff
+
+[Scott Hanselman's Computer Stuff They Didn't Teach You](https://www.youtube.com/playlist?list=PL0M0zPgJ3HSesuPIObeUVQNbKqlw5U2Vr)
