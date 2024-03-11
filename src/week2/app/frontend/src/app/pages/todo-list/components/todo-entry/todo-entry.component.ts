@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -26,11 +26,15 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   styles: ``,
 })
 export class TodoEntryComponent {
+  @Output() itemAdded = new EventEmitter<{ description: string }>();
   form = new FormGroup({
     description: new FormControl(''),
   });
 
   addItem() {
     console.log(this.form.value);
+    this.itemAdded.emit({
+      description: this.form.controls.description.value ?? '',
+    });
   }
 }
