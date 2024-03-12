@@ -1,12 +1,14 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { CounterAction } from './actions';
+import { CountByValues, CounterAction } from './actions';
 
 export interface CounterState {
   current: number;
+  by: CountByValues;
 }
 
 const initialState: CounterState = {
   current: 0,
+  by: 1,
 };
 
 export const counterFeature = createFeature({
@@ -14,11 +16,17 @@ export const counterFeature = createFeature({
   reducer: createReducer(
     initialState,
     on(CounterAction.incrementedTheCount, (state) => ({
-      current: state.current + 1,
+      ...state,
+      current: state.current + state.by,
     })),
     on(CounterAction.decrementedTheCount, (state) => ({
-      current: state.current - 1,
+      ...state,
+      current: state.current - state.by,
     })),
-    on(CounterAction.countWasReset, () => initialState)
+    on(CounterAction.countWasReset, () => initialState),
+    on(CounterAction.countByChanged, (state, action) => ({
+      ...state,
+      by: action.payload,
+    }))
   ),
 });
