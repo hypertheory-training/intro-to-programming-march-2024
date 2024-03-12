@@ -12,6 +12,15 @@ import { CounterAction } from './state/actions';
       <button (click)="decrement()" class="btn btn-primary">-</button>
       <span>{{ current() }}</span>
       <button (click)="increment()" class="btn btn-primary">+</button>
+      <div>
+        <button
+          [disabled]="current() === 0"
+          (click)="reset()"
+          class="btn btn-warning"
+        >
+          Reset
+        </button>
+      </div>
     </div>
   `,
   styles: ``,
@@ -31,5 +40,9 @@ export class CounterComponent {
 
   decrement() {
     this.store.dispatch(CounterAction.decrementedTheCount());
+  }
+
+  reset() {
+    this.store.dispatch(CounterAction.countWasReset());
   }
 }

@@ -18,6 +18,7 @@ export const counterFeature = createFeature({
     })),
     on(CounterAction.decrementedTheCount, (state) => ({
       current: state.current - 1,
-    }))
+    })),
+    on(CounterAction.countWasReset, () => initialState)
   ),
 });

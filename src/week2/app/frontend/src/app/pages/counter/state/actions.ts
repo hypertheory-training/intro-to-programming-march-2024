@@ -5,5 +5,6 @@ export const CounterAction = createActionGroup({
   events: {
     'Incremented The Count': emptyProps(),
     'Decremented The Count': emptyProps(),
+    'Count was Reset': emptyProps(),
   },
 });
