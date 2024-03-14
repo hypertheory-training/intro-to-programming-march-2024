@@ -8,9 +8,10 @@ namespace Bff.Api.Todos;
 public class TodosController(TodosDataContext _context) : ControllerBase
 {
     [HttpGet("/todos")]
-    public async Task<ActionResult<GetTodoListResponse>> GetAllTodosAsync()
+    public async Task<ActionResult<GetTodoListResponse>> GetAllTodosAsync(CancellationToken token)
     {
-        await Task.Delay(3000); // Don't do this.
+
+        await Task.Delay(3000, token); // Don't do this.
         var list = await _context.Todos
             .OrderBy(t => t.CreatedDate)
             .Select(t => new CreateTodoResponse
@@ -19,16 +20,16 @@ public class TodosController(TodosDataContext _context) : ControllerBase
                 Description = t.Description,
                 DueDate = t.DueDate,
                 Priority = t.Priority
-            }).ToListAsync();
+            }).ToListAsync(token);
         var response = new GetTodoListResponse { List = list };
         return Ok(response);
     }
 
     [HttpPost("/todos")]
-    public async Task<IActionResult> AddATodoAsync([FromBody] CreateTodoRequest request)
+    public async Task<ActionResult<CreateTodoResponse>> AddATodoAsync([FromBody] CreateTodoRequest request)
     {
 
-
+        await Task.Delay(3000); // Don't do this.
         // validate it - description is required, min length 3, maximum length 150
         //               dueDate >= Today's Date
         // If it's not valid, return a 400. 
