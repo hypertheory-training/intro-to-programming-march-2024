@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { TodoEntryComponent } from './components/todo-entry/todo-entry.component';
 import { TodoItemListComponent } from './components/todo-item-list/todo-item-list.component';
 import { TodoListItem } from './models';
+import { Store } from '@ngrx/store';
+import { todosFeature } from './state';
 
 @Component({
   selector: 'app-todo-list',
@@ -21,13 +23,11 @@ import { TodoListItem } from './models';
   imports: [TodoEntryComponent, TodoItemListComponent],
 })
 export class TodoListComponent {
+  constructor(private store: Store) {}
+
+  // todoList = this.store.selectSignal(todosFeature.)
   addItem(item: { description: string }) {
-    const itemToAdd: TodoListItem = {
-      id: crypto.randomUUID(),
-      description: item.description,
-      completed: false,
-    };
-    this.todoList = [itemToAdd, ...this.todoList];
+    // Todo: Dispatch An Action
   }
 
   todoList: TodoListItem[] = [
