@@ -11,6 +11,18 @@ export class TodoEffects {
   // When the applications started, what does that mean for the todos feature?
   readonly baseUrl = environment.apiUrl;
 
+  markCompleted$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(TodoEvents.todoItemMarkedComplete),
+      mergeMap(({ payload }) =>
+        this.httpClient.post(this.baseUrl + '/completed-todos', payload).pipe(
+          map(() => ({ ...payload, completed: true })),
+          map((payload) => TodoDocuments.todo({ payload }))
+        )
+      )
+    )
+  );
+
   addTodo$ = createEffect(() =>
     this.actions$.pipe(
       ofType(TodoEvents.todoItemAdded),

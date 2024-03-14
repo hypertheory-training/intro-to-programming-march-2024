@@ -7,6 +7,23 @@ namespace Bff.Api.Todos;
 [ApiController]
 public class TodosController(TodosDataContext _context) : ControllerBase
 {
+
+    [HttpPost("/completed-todos")]
+    public async Task<ActionResult> MarkTodoComplete([FromBody] CreateTodoResponse request)
+    {
+
+        // see if we have it, if not, return a bad request
+        var todo = await _context.Todos.SingleOrDefaultAsync(x => x.Id == request.Id);
+        if (todo is null)
+        {
+            return BadRequest("No Todo To Mark Complete");
+        }
+        todo.Completed = true;
+        await _context.SaveChangesAsync();
+        return NoContent();
+        // if we do, mark it complete, save it, and then return ok
+    }
+
     [HttpGet("/todos")]
     public async Task<ActionResult<GetTodoListResponse>> GetAllTodosAsync(CancellationToken token)
     {
@@ -19,7 +36,8 @@ public class TodosController(TodosDataContext _context) : ControllerBase
                 Id = t.Id,
                 Description = t.Description,
                 DueDate = t.DueDate,
-                Priority = t.Priority
+                Priority = t.Priority,
+                Completed = t.Completed
             }).ToListAsync(token);
         var response = new GetTodoListResponse { List = list };
         return Ok(response);
