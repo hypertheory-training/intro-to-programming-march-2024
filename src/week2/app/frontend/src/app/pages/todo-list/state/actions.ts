@@ -12,7 +12,9 @@ export const TodoCommands = createActionGroup({
 // An event is something that happened, that might mean multiple things need to happen, but the event is decoupled from that.
 export const TodoEvents = createActionGroup({
   source: 'Todo Events',
-  events: {},
+  events: {
+    'Todo Item Added': props<{ payload: string }>(),
+  },
 });
 
 // Often the result of a command

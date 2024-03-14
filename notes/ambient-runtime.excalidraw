@@ -628,6 +628,108 @@
       "endBinding": null,
       "startArrowhead": null,
       "endArrowhead": "arrow"
+    },
+    {
+      "id": "13YhO2kaMVK1tImx8Eyrb",
+      "type": "rectangle",
+      "x": 472,
+      "y": 1015,
+      "width": 115,
+      "height": 176,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": {
+        "type": 3
+      },
+      "seed": 382134709,
+      "version": 8,
+      "versionNonce": 425056085,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1710435119449,
+      "link": null,
+      "locked": false
+    },
+    {
+      "id": "pcwIOC3FdbGgPnnmYrlkj",
+      "type": "arrow",
+      "x": 584,
+      "y": 1091,
+      "width": 224,
+      "height": 106,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": {
+        "type": 2
+      },
+      "seed": 654273819,
+      "version": 10,
+      "versionNonce": 566665493,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1710435123016,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          224,
+          -106
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "startBinding": null,
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": "arrow"
+    },
+    {
+      "id": "BLU_YDfaxCJW6ytaFBAnl",
+      "type": "rectangle",
+      "x": 818,
+      "y": 922,
+      "width": 129,
+      "height": 153,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": {
+        "type": 3
+      },
+      "seed": 543139925,
+      "version": 18,
+      "versionNonce": 1351961525,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1710435157488,
+      "link": null,
+      "locked": false
     }
   ],
   "appState": {
