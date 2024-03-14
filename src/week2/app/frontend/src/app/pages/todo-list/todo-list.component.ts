@@ -16,7 +16,7 @@ import { todosFeature } from './state';
       <app-todo-entry (itemAdded)="addItem($event)" />
     </div>
     <div>
-      <app-todo-item-list [list]="todoList" />
+      <app-todo-item-list [list]="todoList()" />
     </div>
   `,
   styles: ``,
@@ -30,8 +30,5 @@ export class TodoListComponent {
     // Todo: Dispatch An Action
   }
 
-  todoList: TodoListItem[] = [
-    { id: '3', description: 'Learn Signals', completed: false },
-    { id: '4', description: 'Learn Redux', completed: true },
-  ];
+  todoList = this.store.selectSignal(todosFeature.selectTodoListItems);
 }
